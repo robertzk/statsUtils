@@ -1,5 +1,11 @@
 #' Sure independence screening helper.
 #' TODO: Document better.
+#' @param dep_var numeric vector
+#' @param indep_var vector
+#' @param cutoff default is 0.05
+#' @param freq_cutoff default is 0.05
+#' @param link character vector
+#' @param depth do not touch
 #' @export
 sure_independence_screening <- function(dep_var, indep_var, cutoff = 0.05, freq_cutoff = 0.05, link = "logit", depth = 1) {
   if (length(uniques <- unique(indep_var)) <= 1 ||

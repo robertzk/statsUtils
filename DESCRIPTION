@@ -8,6 +8,7 @@ Depends:
     R (>= 3.0.1)
 License: MIT
 LazyData: true
-Suggests: testthat,
-  knitr,
-  microbenchmark
+Suggests:
+    testthat,
+    knitr,
+    microbenchmark
