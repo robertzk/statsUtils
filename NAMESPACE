@@ -1,1 +1,4 @@
 export(sure_independence_screening)
+export(filter_level_name)
+export(generate_formula)
+export(parse_regression_into_levels)
