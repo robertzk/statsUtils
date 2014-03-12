@@ -2,8 +2,10 @@
 #' TODO: Document better.
 #' @export
 sure_independence_screening <- function(dep_var, indep_var, cutoff = 0.05, freq_cutoff = 0.05, link = "logit", depth = 1) {
-  if (length(uniques <- unique(indep_var)) <= 1 ||
-      (length(uniques) == 2 && NA %in% uniques)) return(NULL)
+  #if (is.factor(indep_var) && nlevels(indep_var) == 1)
+  if ( length(uniques <- unique(indep_var)) <= 1 ||
+      (length(uniques) == 2 && NA %in% uniques))
+    return(NULL)
   dataframe <- data.frame(dep_var, indep_var)
   regression <-
     tryCatch(glm(dep_var ~ indep_var,
@@ -16,16 +18,19 @@ sure_independence_screening <- function(dep_var, indep_var, cutoff = 0.05, freq_
   worst_level_pval <- 0
   parsed_levels <- parse_regression_into_levels(coefs, column = indep_var,
                                variable = 'indep_var', indep_vars = 'indep_var',
-                               active_vars = c('indep_var', 'dep_var'), reject_coef = cutoff)
+                               active_vars = 'indep_var', reject_coef = cutoff)
   worst_level <- parsed_levels[['worst_level']]
   good_levels <- parsed_levels[['good_levels']]
   bad_levels <- parsed_levels[['bad_levels']]
+  print(bad_levels)
+  cat("Worst: ")
+  print(worst_level)
 
-  if ((sum(indep_var %in% good_levels) / nrow(dataframe)) < cutoff
-      && length(bad_levels) < 2) return(NULL)
+  if (length(bad_levels) != 0 && worst_level == '') stop('wtf')
+  if (mean(indep_var %in% good_levels) < freq_cutoff
+      && length(bad_levels) < 2) { print("cutoff"); return(NULL) }
   if (length(bad_levels) == 0) return(indep_var)
 
-  reduced_col <- as.character(indep_var)
   factors <- as.character(indep_var)
   factors[factors == worst_level] <- 'BAD'
   
