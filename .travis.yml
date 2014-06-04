@@ -6,7 +6,6 @@ before_install:
 install:
 - ./travis-tool.sh install_deps
 - ./travis-tool.sh install_r microbenchmark knitr
-- ./travis-tool.sh install_github robertzk/statsUtils
 script: ./travis-tool.sh run_tests
 after_failure:
 - ./travis-tool.sh dump_logs
