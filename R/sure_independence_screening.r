@@ -11,11 +11,7 @@ sure_independence_screening <- function(dep_var, indep_var, cutoff = 0.05, freq_
   if (length(uniques <- unique(indep_var)) <= 1 ||
       (length(uniques) == 2 && NA %in% uniques)) return(NULL)
   dataframe <- data.frame(dep_var, indep_var)
-  if (is.factor(indep_var) && nlevels(indep_var) > 30) {
-    stop("You have a variable with more than 30 levels. ",
-         "This will cause SIS to take a really long time and you ",
-         "should probably fix it.", call. = FALSE)
-  }
+  
   regression <-
     tryCatch(glm(dep_var ~ indep_var,
         data = dataframe,
