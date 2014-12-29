@@ -2,21 +2,17 @@ language: c
 before_install:
 - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
 - chmod 755 ./travis-tool.sh
-- ./travis-tool.sh bootstrap
+- "./travis-tool.sh bootstrap"
 install:
-- ./travis-tool.sh install_deps
-- ./travis-tool.sh install_r microbenchmark knitr
-script: ./travis-tool.sh run_tests
+- "./travis-tool.sh install_deps"
+- "./travis-tool.sh install_r microbenchmark knitr"
+script: "./travis-tool.sh run_tests"
 after_failure:
-- ./travis-tool.sh dump_logs
+- "./travis-tool.sh dump_logs"
 notifications:
   email:
     on_success: change
     on_failure: change
-#  hipchat:
-#    rooms:
-#      secure: bIlgaIa0NLZM1DZnMost31e2HT99AIgjBOYnEpbYR+tE3sVXAMOmf5OnbHNm6Zb1DEeRphpmn4464zCWXZxD58OcW3UpdrJQ8JCMYN6U5aoDa64rA5zfQNxUUZR6zs4sRAxfZVZjI0DwK0I74RAJP/8t+KTYTrZxJq3YOkxxhgA=
-#    on_success: change
-#    on_failure: change
-#    template:
-#    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message} | Details: %{build_url} | Changes: %{compare_url}'
+  hipchat:
+    rooms:
+      secure: MmpdJaQrI4UgpW31FV5HAMEUw3kgbLlze+8h8jxgXoSeEE8pFolsfvZEuvn2XwZBmQIM+PShpR9QXMnectQj5R5A9UYn0t5oU170vyAQd8SbmFOFx6UNcATAQ8q8QqbAInWKBCVVUHO+CfRfufmZVWbuQ9ApUp7YQiI2qJOFphE=
