@@ -34,6 +34,7 @@ nzv <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE) {
     out
 }
 
+#' @importFrom plyr dlply .
 #' @export
 createDataPartition <- function (y, times = 1, p = 0.5, list = TRUE, groups = min(5, length(y))) {
     out <- vector(mode = "list", times)
@@ -69,7 +70,7 @@ createDataPartition <- function (y, times = 1, p = 0.5, list = TRUE, groups = mi
         out
     }
     for (j in 1:times) {
-        tmp <- dlply(data.frame(y = y, index = seq(along = y)), 
+        tmp <- plyr::dlply(data.frame(y = y, index = seq(along = y)), 
             .(y), subsample, p = p)
         tmp <- sort(as.vector(unlist(tmp)))
         out[[j]] <- tmp

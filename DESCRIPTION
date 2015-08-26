@@ -10,7 +10,10 @@ Depends:
     R (>= 3.0.1)
 License: MIT
 LazyData: true
+Imports:
+    plyr
 Suggests:
     testthat,
     knitr,
-    microbenchmark
+    microbenchmark,
+    caret
