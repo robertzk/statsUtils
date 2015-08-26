@@ -1,3 +1,40 @@
+prettySeq <- function (x) {
+  paste("Resample", gsub(" ", "0", format(seq(along = x))), sep = "")
+}
+
+zeroVar <- function (x) {
+    x <- x[, colnames(x) != ".outcome", drop = FALSE]
+    which(apply(x, 2, function(x) length(unique(x)) < 2))
+}
+
+nzv <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE) {
+    if (is.vector(x)) 
+        x <- matrix(x, ncol = 1)
+    freqRatio <- apply(x, 2, function(data) {
+        t <- table(data[!is.na(data)])
+        if (length(t) <= 1) {
+            return(0)
+        }
+        w <- which.max(t)
+        return(max(t, na.rm = TRUE)/max(t[-w], na.rm = TRUE))
+    })
+    lunique <- apply(x, 2, function(data) length(unique(data[!is.na(data)])))
+    percentUnique <- 100 * lunique/apply(x, 2, length)
+    zeroVar <- (lunique == 1) | apply(x, 2, function(data) all(is.na(data)))
+    if (saveMetrics) {
+        out <- data.frame(freqRatio = freqRatio, percentUnique = percentUnique, 
+            zeroVar = zeroVar, nzv = (freqRatio > freqCut & percentUnique <= 
+                uniqueCut) | zeroVar)
+    }
+    else {
+        out <- which((freqRatio > freqCut & percentUnique <= 
+            uniqueCut) | zeroVar)
+        names(out) <- NULL
+    }
+    out
+}
+
+#' @importFrom plyr dlply .
 #' @export
 createDataPartition <- function (y, times = 1, p = 0.5, list = TRUE, groups = min(5, length(y))) {
     out <- vector(mode = "list", times)
@@ -33,7 +70,7 @@ createDataPartition <- function (y, times = 1, p = 0.5, list = TRUE, groups = mi
         out
     }
     for (j in 1:times) {
-        tmp <- dlply(data.frame(y = y, index = seq(along = y)), 
+        tmp <- plyr::dlply(data.frame(y = y, index = seq(along = y)), 
             .(y), subsample, p = p)
         tmp <- sort(as.vector(unlist(tmp)))
         out[[j]] <- tmp
@@ -49,7 +86,7 @@ createDataPartition <- function (y, times = 1, p = 0.5, list = TRUE, groups = mi
 }
 
 #' @export
-nzv <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE, foreach = FALSE, allowParallel = TRUE) {
+nearZeroVar <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE, foreach = FALSE, allowParallel = TRUE) {
     if (!foreach) 
         return(nzv(x, freqCut = freqCut, uniqueCut = uniqueCut, 
             saveMetrics = saveMetrics))

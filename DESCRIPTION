@@ -1,7 +1,7 @@
 Package: statsUtils
 Title: Statistics utilities
 Description: A collection of miscellaneous statistical utilities
-Version: 0.1.2
+Version: 0.1.3
 Author: Robert Krzyzanowski <technoguyrob@gmail.com>
 Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
 Authors@R: c(person("Robert", "Krzyzanowski",
@@ -10,7 +10,10 @@ Depends:
     R (>= 3.0.1)
 License: MIT
 LazyData: true
+Imports:
+    plyr
 Suggests:
     testthat,
     knitr,
-    microbenchmark
+    microbenchmark,
+    caret

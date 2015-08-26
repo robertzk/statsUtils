@@ -1,3 +1,7 @@
+# Version 0.1.3
+
+  * Some bugfixes for the `caret` replacements in 0.1.2
+
 # Version 0.1.2
 
   * Copied the `createDataPartition` and `nearZeroVar` helpers from the caret package,

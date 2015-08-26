@@ -1,2 +1,4 @@
 library(testthat)
-test_package("statsUtils")
+library(statsUtils)
+
+test_check("statsUtils")
