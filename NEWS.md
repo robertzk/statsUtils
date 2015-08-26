@@ -1,0 +1,4 @@
+# Version 0.1.2
+
+  * Copied the `createDataPartition` and `nearZeroVar` helpers from the caret package,
+    since they are independent of the package and are useful in their own right.
