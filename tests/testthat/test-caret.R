@@ -1,4 +1,5 @@
 context("caret")
+library(caret)
 
 test_that("it preserves caret function createDataPartition", {
   x <- rgamma(50, 3, .5)
