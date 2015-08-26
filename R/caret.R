@@ -85,7 +85,7 @@ createDataPartition <- function (y, times = 1, p = 0.5, list = TRUE, groups = mi
 }
 
 #' @export
-nzv <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE, foreach = FALSE, allowParallel = TRUE) {
+nearZeroVar <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE, foreach = FALSE, allowParallel = TRUE) {
     if (!foreach) 
         return(nzv(x, freqCut = freqCut, uniqueCut = uniqueCut, 
             saveMetrics = saveMetrics))
