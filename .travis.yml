@@ -19,3 +19,7 @@ notifications:
   hipchat:
     rooms:
       secure: mRvvE4M7YAS5CLn+Atu/LM+/8H1dicwgw0Idj3ZfR/SNv6hHI++162cX5KOccVY/ZVyObJFfh4Mq9+XF+ProF8+BE9QoCd+nSdCaedAIxhWQ+FNumxrZzmB/Un4WG0+fLlZumNdGeqplSwbtSzN3welVHrb14z6XDGajTeSMzyc=
+env:
+- global:
+  - WARNINGS_ARE_ERRORS=1
+  - _R_CHECK_FORCE_SUGGESTS_=0
