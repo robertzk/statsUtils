@@ -3,7 +3,8 @@ Miscellaneous statistical utilities for syberiaMungebits [![Build Status](https:
 
 Intended to be used in conjunction with [syberiaMungebits](https://github.com/robertzk/syberiaMungebits).
 
-Currently, the only real statistical meat here is [sure independence screening](R/sure_independence_screening.r).
+Currently, the only real statistical meat here is [sure independence screening](R/sure_independence_screening.r)
+and some [extraction of caret helpers](R/caret.R).
 
 # Installation
 
