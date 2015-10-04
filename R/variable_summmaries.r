@@ -1,3 +1,8 @@
+#' Compute variable summaries.
+#'
+#' @param dataframe data.frame. A dataset to compute summaries from. The
+#' @return a list with "missing_percentages", "means", and "standard_deviations"
+#'    for each numeric variable.
 #' @export
 variable_summaries <- function(dataframe) {
   numeric_cols <- vapply(dataframe, is.numeric, logical(1))

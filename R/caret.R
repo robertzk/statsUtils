@@ -34,6 +34,15 @@ nzv <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE) {
     out
 }
 
+
+#' Data Splitting Functions
+#'
+#' @seealso \code{nearZeroVar} in the caret package.
+#' @param y data.frame.
+#' @param times integer.
+#' @param p numeric.
+#' @param list logical.
+#' @param groups numeric.
 #' @importFrom plyr dlply .
 #' @export
 createDataPartition <- function (y, times = 1, p = 0.5, list = TRUE, groups = min(5, length(y))) {
@@ -85,6 +94,15 @@ createDataPartition <- function (y, times = 1, p = 0.5, list = TRUE, groups = mi
     out
 }
 
+#' Identification of near zero variance predictors
+#'
+#' @seealso \code{nearZeroVar} in the caret package.
+#' @param x data.frame.
+#' @param freqCut numeric. 
+#' @param uniqueCut integer.
+#' @param saveMetrics logical.
+#' @param foreach logical. 
+#' @param allowParallel logical.
 #' @export
 nearZeroVar <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE, foreach = FALSE, allowParallel = TRUE) {
     if (!foreach) 
