@@ -4,3 +4,14 @@ Miscellaneous statistical utilities for syberiaMungebits [![Build Status](https:
 Intended to be used in conjunction with [syberiaMungebits](https://github.com/robertzk/syberiaMungebits).
 
 Currently, the only real statistical meat here is [sure independence screening](R/sure_independence_screening.r).
+
+# Installation
+
+This package is not yet available from CRAN (as of October 5, 2015).
+To install the latest development builds directly from GitHub, run this instead:
+
+```R
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("robertzk/statsUtils")
+```
+
