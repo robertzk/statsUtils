@@ -141,6 +141,7 @@ nearZeroVar <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE,
 
 #' @inheritParams createDataPartition
 #' @rdname createDataPartition
+#' @export
 createFolds <-
   function(y, k = 10, list = TRUE, returnTrain = FALSE) {
     if(class(y)[1] == "Surv") y <- y[,"time"]
@@ -200,6 +201,9 @@ createFolds <-
     out
   }
 
+#' @inheritParams createDataPartition
+#' @rdname createDataPartition
+#' @export
 createMultiFolds <- function(y, k = 10, times = 5) {
   if(class(y)[1] == "Surv") y <- y[,"time"]
   prettyNums <- paste("Rep", gsub(" ", "0", format(1:times)), sep = "")
