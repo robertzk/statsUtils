@@ -1,3 +1,7 @@
+# Version 0.1.4
+
+  * caret::createFolds
+
 # Version 0.1.3
 
   * Some bugfixes for the `caret` replacements in 0.1.2
