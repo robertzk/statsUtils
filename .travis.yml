@@ -24,5 +24,5 @@ notifications:
       | Details: %{build_url} | Changes: %{compare_url}"
 env:
 - global:
-  - WARNINGS_ARE_ERRORS=1
+  - WARNINGS_ARE_ERRORS=0
   - _R_CHECK_FORCE_SUGGESTS_=0

@@ -2,10 +2,21 @@
 % Please edit documentation in R/caret.R
 \name{createDataPartition}
 \alias{createDataPartition}
-\title{Data Splitting Functions}
+\alias{createFolds}
+\alias{createMultiFolds}
+\title{Data Splitting Functions
+A series of test/training partitions are created using
+  ‘createDataPartition’ while ‘createResample’ creates one or more
+  bootstrap samples. ‘createFolds’ splits the data into ‘k’ groups
+  while ‘createTimeSlices’ creates cross-validation sample
+  information to be used with time series data.}
 \usage{
 createDataPartition(y, times = 1, p = 0.5, list = TRUE, groups = min(5,
   length(y)))
+
+createFolds(y, k = 10, list = TRUE, returnTrain = FALSE)
+
+createMultiFolds(y, k = 10, times = 5)
 }
 \arguments{
 \item{y}{data.frame.}
@@ -19,7 +30,7 @@ createDataPartition(y, times = 1, p = 0.5, list = TRUE, groups = min(5,
 \item{groups}{numeric.}
 }
 \description{
-Data Splitting Functions
+Check out documentation for `caret::createFolds`
 }
 \seealso{
 \code{nearZeroVar} in the caret package.
