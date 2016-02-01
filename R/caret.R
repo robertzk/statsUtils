@@ -201,8 +201,12 @@ createFolds <-
     out
   }
 
-#' @inheritParams createDataPartition
-#' @rdname createDataPartition
+#' Create multi folds.
+#'
+#' @param y vector. A vector of stuff.
+#' @param k integer. Number of folds.
+#' @param times integer. Number of times.
+#' @return The result of calling \code{\link{createFolds}} on each split.
 #' @export
 createMultiFolds <- function(y, k = 10, times = 5) {
   if(class(y)[1] == "Surv") y <- y[,"time"]

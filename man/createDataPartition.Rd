@@ -3,7 +3,6 @@
 \name{createDataPartition}
 \alias{createDataPartition}
 \alias{createFolds}
-\alias{createMultiFolds}
 \title{Data Splitting Functions
 A series of test/training partitions are created using
   ‘createDataPartition’ while ‘createResample’ creates one or more
@@ -15,8 +14,6 @@ createDataPartition(y, times = 1, p = 0.5, list = TRUE, groups = min(5,
   length(y)))
 
 createFolds(y, k = 10, list = TRUE, returnTrain = FALSE)
-
-createMultiFolds(y, k = 10, times = 5)
 }
 \arguments{
 \item{y}{data.frame.}
