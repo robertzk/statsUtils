@@ -37,9 +37,9 @@ nzv <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE) {
 
 #' Data Splitting Functions
 #' A series of test/training partitions are created using
-#'   ‘createDataPartition’ while ‘createResample’ creates one or more
-#'   bootstrap samples. ‘createFolds’ splits the data into ‘k’ groups
-#'   while ‘createTimeSlices’ creates cross-validation sample
+#'   'createDataPartition' while 'createResample' creates one or more
+#'   bootstrap samples. 'createFolds' splits the data into 'k' groups
+#'   while 'createTimeSlices' creates cross-validation sample
 #'   information to be used with time series data.
 #'
 #'  Check out documentation for `caret::createFolds`
@@ -139,8 +139,12 @@ nearZeroVar <- function (x, freqCut = 95/5, uniqueCut = 10, saveMetrics = FALSE,
     res
 }
 
-#' @inheritParams createDataPartition
-#' @rdname createDataPartition
+#' Create cross validation folds.
+#'
+#' @param y vector. A vector of stuff.
+#' @param k integer. Number of folds.
+#' @param list logical. Whether or not to return a list.
+#' @param returnTrain logical. Whether or not to return the train data.
 #' @export
 createFolds <-
   function(y, k = 10, list = TRUE, returnTrain = FALSE) {
@@ -201,8 +205,12 @@ createFolds <-
     out
   }
 
-#' @inheritParams createDataPartition
-#' @rdname createDataPartition
+#' Create multi folds.
+#'
+#' @param y vector. A vector of stuff.
+#' @param k integer. Number of folds.
+#' @param times integer. Number of times.
+#' @return The result of calling \code{\link{createFolds}} on each split.
 #' @export
 createMultiFolds <- function(y, k = 10, times = 5) {
   if(class(y)[1] == "Surv") y <- y[,"time"]
